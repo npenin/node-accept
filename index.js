@@ -1,3 +1,10 @@
+var rawDebug=require('debug')('accept');
+var inspect=require('util').inspect;
+var debug=function(message)
+{
+	rawDebug(inspect(message));
+}
+
 var startsWith=function(s, ins)
 {
 	return s.substring(0,ins.length)==ins;
@@ -14,14 +21,12 @@ module.exports=function accept(h, closests, preferred)
 	{
 		var closest=closests[i];
 		var closestMimes=closest.split('/');
-		// return closest;
-		// console.log(closest);
 		for(var j in accepts)
 		{
 			var accept=accepts[j].trim();
 			var mediaRange=accept.split(';');
 			var contentType=accept;
-			var quality=1;
+			var quality=1+0.01*(accepts.length-j);
 			if(mediaRange.length>1)
 			{
 				contentType=mediaRange[0];
@@ -34,10 +39,12 @@ module.exports=function accept(h, closests, preferred)
 			if(mimes[1]=='*')
 				mimes[1]=closestMimes[1];
 			contentType=mimes.join('/');
-			// console.log({contentType:contentType, quality:quality});
+			debug('testing :')
+			debug({contentType:contentType, quality:quality});
+			debug('against :'+closest)
 			if((match==undefined || quality > match.quality) && closest==contentType || contentType==preferred)
 			{
-				// console.log(match);	
+				debug(match);	
 				match={contentType:contentType, quality:quality};
 			}
 			

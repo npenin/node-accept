@@ -1,1 +1,2 @@
-console.log(require('accept')('image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap, */*;q=0.5', ['text/html']));
+process.env.DEBUG='accept';
+console.log(require('accept')('application/json, text/javascript, */*; q=0.01', ['text/html', 'application/json'], 'text/plain'));
