@@ -15,6 +15,8 @@ var endsWith=function(s,ins)
 };
 module.exports=function accept(h, closests, preferred)
 {
+	if(h==null)
+		return preferred;
 	var accepts=h.split(',');
 	var match;
 	for(var i in closests)
