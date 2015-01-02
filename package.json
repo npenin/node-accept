@@ -1,0 +1,17 @@
+{
+  "name": "accept",
+  "version": "0.0.2",
+  "description": "write less, do more nodejs",
+  "bugs": {
+    "url": "http://github.com/npenin/node-accept/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/npenin/node-accept.git"
+  },
+  "author": "Nicolas Penin <nicolas.penin@dragon-angel.fr>",
+  "dependencies": {
+    "debug": "latest"
+  },
+  "license": "MsPl"
+}
